@@ -32,8 +32,8 @@
 
        var isMobileDevice = (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);
 
-        var width = isMobileDevice ? 195 : 960,
-            height = isMobileDevice ? 100 : 500;
+        var width = isMobileDevice ? 320 : 960,
+            height = isMobileDevice ? 165 : 500;
 
         var projection = d3.geo.conicConformal()
             .parallels([38 + 02 / 60, 39 + 12 / 60])
