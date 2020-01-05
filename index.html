@@ -28,7 +28,7 @@
     <script src="topojson.v1.min.js" charset="utf-8"></script>
     <script>
 
-        var isSanctuaryCount = isNotSanctuaryCount = 0;
+        var sanctuaryCount = antiSanctuaryCount = noActionCount = 0;
 
         var width = 960,
             height = 500;
@@ -36,7 +36,7 @@
         var projection = d3.geo.conicConformal()
             .parallels([38 + 02 / 60, 39 + 12 / 60])
             .rotate([78 + 30 / 60, 0])
-            .scale(7500)
+            .scale(6000)
             .translate([0, 0]);
 
         var path = d3.geo.path()
@@ -51,57 +51,80 @@
             .style("opacity", 0);
 
         var sanctuaryIds = [];
+        var antiSantuaryIds = [];
 
-        var isSanctuary = function (id) {
-            if (sanctuaryIds.includes(id)) {
-                isSanctuaryCount++;
-                return true;
+        //sanctuaryType: 0 = none, 1 = sanctuary, 2 = anti-sanctuary, 3 = no action
+        var getSanctuaryType = function (id) {
+            if (id !== 'undefined' && id != "") {
+
+                if (sanctuaryIds.includes(id)) {
+                    sanctuaryCount++;
+                    return 1;
+                }
+                else if (
+                    antiSantuaryIds.includes(id)) {
+                    antiSanctuaryCount++;
+                    return 2;
+                }
+                else {
+                    noActionCount++;
+                    return 3;
+                }
             }
-            isNotSanctuaryCount++;
-            return false;
+            return 0;
         };
 
         d3.json("sanctuaries.json", function (error, data) {
             if (error) throw error;
 
-            sanctuaryIds = data.sanctuaryIds;
+            sanctuaryIds = data.sanctuaryIds;//Load sancuary ids
 
-            d3.json("va-counties.json", function (error, topo) {
+            d3.json("antisanctuaries.json", function (error, data) {
                 if (error) throw error;
 
-                var state = topojson.feature(topo, topo.objects.states),
-                    bounds = path.bounds(state),
-                    counties = topojson.feature(topo, topo.objects.counties);
+                antiSantuaryIds = data.antiSanctuaryIds;//Load anti-sanctuary ids
 
-                projection
-                    .translate([width / 2 - (bounds[0][0] + bounds[1][0]) / 2, height / 2 - (bounds[0][1] + bounds[1][1]) / 2]);
+                d3.json("va-counties.json", function (error, topo) {
+                    if (error) throw error;
 
-                svg.selectAll("path")
-                    .data(counties.features)
-                    .enter().append("path")
-                    .attr("d", path)
-                    .style("fill", function (d) {
-                        if (isSanctuary(d.id)) {
-                            return "lightskyblue";
-                        }
-                        else
-                            return "lightcoral";
-                    })
-                    .on("mouseover", function (d) {
-                        d3.select(this).style("opacity", .5);
-                        tooltip.transition()
-                            .duration(200)
-                            .style("opacity", .9);
-                        tooltip.html(d.properties.name)
-                            .style("left", (d3.event.pageX) + "px")
-                            .style("top", (d3.event.pageY - 28) + "px");
-                    })
-                    .on("mouseout", function (d) {
-                        d3.select(this).style("opacity", 1);
-                        tooltip.transition()
-                            .duration(500)
-                            .style("opacity", 0);
-                    });
+                    var state = topojson.feature(topo, topo.objects.states),
+                        bounds = path.bounds(state),
+                        counties = topojson.feature(topo, topo.objects.counties);
+
+                    projection
+                        .translate([width / 2 - (bounds[0][0] + bounds[1][0]) / 2, height / 2 - (bounds[0][1] + bounds[1][1]) / 2]);
+
+                    svg.selectAll("path")
+                        .data(counties.features)
+                        .enter().append("path")
+                        .attr("d", path)
+                        .style("fill", function (d) {
+                            switch (getSanctuaryType(d.id)) {
+                                case 1:
+                                    return "lightskyblue";
+                                case 2:
+                                    return "lightcoral";
+                                case 3:
+                                case 0:
+                                    return "lightgrey";
+                            }
+                        })
+                        .on("mouseover", function (d) {
+                            d3.select(this).style("opacity", .5);
+                            tooltip.transition()
+                                .duration(200)
+                                .style("opacity", .9);
+                            tooltip.html(d.properties.name)
+                                .style("left", (d3.event.pageX) + "px")
+                                .style("top", (d3.event.pageY - 28) + "px");
+                        })
+                        .on("mouseout", function (d) {
+                            d3.select(this).style("opacity", 1);
+                            tooltip.transition()
+                                .duration(500)
+                                .style("opacity", 0);
+                        });
+                });
             });
         });
     </script>
