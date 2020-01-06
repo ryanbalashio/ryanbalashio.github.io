@@ -138,16 +138,24 @@
             });
         });
 
+        var lastScale = 0;
+
         // zoom and pan
         var zoom = d3.behavior.zoom()
             .on("zoom", function () {
-                g.attr("transform", "translate(" +
-                    d3.event.translate.join(",") + ")scale(" + d3.event.scale + ")");
-                g.selectAll("circle")
-                    .attr("d", path.projection(projection));
-                g.selectAll("path")
-                    .attr("d", path.projection(projection));
 
+                //Disable zoom on mobile device
+                if (!isMobileDevice) {
+                    g.attr("transform", "translate(" +
+                        d3.event.translate.join(",") + ")scale(" + d3.event.scale + ")");
+                }
+                else {
+                    if (lastScale == d3.event.scale) {
+                        g.attr("transform", "translate(" +
+                            d3.event.translate.join(",") + ")");
+                    }
+                }
+                lastScale = d3.event.scale;
             });
 
         svg.call(zoom)
