@@ -53,14 +53,15 @@
         var svg = d3.select("body").append("svg")
             .attr("width", width)
             .attr("height", height)
-            .attr("cursor","move");
+            .attr("cursor", "move");
 
-       svg.append("rect")
+        svg.append("rect")
             .attr("width", "100%")
             .attr("height", "100%")
             .attr("fill", "white");
 
-        var g = svg.append("g");
+        var g = svg.append("g")
+            .attr("cursor", "pointer");
 
         var tooltip = d3.select("body").append("div")
             .attr("class", "tooltip")
