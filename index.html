@@ -145,7 +145,7 @@
             .on("zoom", function () {
 
                 //Disable zoom on mobile device
-                if (!isMobileDevice) {
+                if (true) {
                     g.attr("transform", "translate(" +
                         d3.event.translate.join(",") + ")scale(" + d3.event.scale + ")");
                 }
