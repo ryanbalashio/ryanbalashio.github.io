@@ -8,7 +8,8 @@ body {
     height: 100%;
     margin: 0;
     padding: 0;
-    overflow: hidden;
+    overflow-y: hidden;
+    overflow-x: hidden;
 }
 
 div.tooltip {
@@ -42,14 +43,13 @@ div.tooltip {
 #header {}
 
 #legend {
-    width: 300px;
+    width: 600px;
     background-color: transparent;
     max-height: 300px;
     position: fixed;
     top: 1em;
     left: 1em;
-    overflow-x: auto;
-    overflow-y: hidden;
+   
 }
 
 .accordionContainer {}
