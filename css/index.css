@@ -27,6 +27,7 @@ div.tooltip {
     padding: 0;
     border: solid lightgray;
     border-width: 1px;
+    overflow: hidden;
 }
 
 #chartG {}
@@ -35,6 +36,7 @@ div.tooltip {
     background-color: white;
     margin: 0;
     padding: 0;
+    overflow: hidden;
 }
 
 #header {}
