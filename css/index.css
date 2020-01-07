@@ -29,6 +29,7 @@ div.tooltip {
     border: solid lightgray;
     border-width: 1px;
     overflow: hidden;
+    min-width: calc(1em + 300px);
 }
 
 #chartG {}
