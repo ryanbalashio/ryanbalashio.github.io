@@ -8,9 +8,8 @@ body {
     height: 100%;
     margin: 0;
     padding: 0;
-    border: solid lightgray;
-    border-width: 1px;
-    overflow-x: scroll;
+   
+    overflow-x: hidden;
     overflow-y: hidden;
 }
 
@@ -25,12 +24,20 @@ div.tooltip {
     pointer-events: none;
 }
 
-#chartSvg {}
+#chartSvg {
+    margin: 0;
+    padding: 0;
+    border: solid lightgray;
+    border-width: 1px;
+}
 
 #chartG {}
 
 #chart {
-    background-color: white
+    background-color: white;
+    margin: 0;
+    padding: 0;
+   
 }
 
 #header {}
@@ -42,6 +49,8 @@ div.tooltip {
     position: fixed;
     top: 1em;
     left: 1em;
+    overflow-x: scroll;
+    overflow-y: hidden;
 }
 
 .accordionContainer {}
