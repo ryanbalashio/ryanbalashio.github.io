@@ -1,0 +1,78 @@
+path {
+    stroke: #fff;
+    stroke-width: .5px;
+}
+
+body {
+    text-align: center;
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+
+div.tooltip {
+    position: absolute;
+    text-align: center;
+    width: auto;
+    height: auto;
+    padding: 2px;
+    font: 14px sans-serif;
+    border: 0px;
+    pointer-events: none;
+}
+
+#chartSvg {
+    
+}
+
+#chartG {}
+
+#chart {
+    background-color: white
+}
+
+#header {}
+
+#legend {
+    width: 300px;
+   background-color: transparent;
+   max-height: 300px;
+   
+   position: fixed;
+    top: 1em;
+    left: 1em;
+}
+
+.accordionContainer {
+   
+   
+}
+
+.accordionGroupHeader .panel-heading {
+    background-color: white;
+}
+
+.accordionGroupHeader.sanctuaryHeader .panel-heading {
+    color: white;
+    background-color: #87CEFA;
+}
+
+.accordionGroupHeader.antiSanctuaryHeader .panel-heading {
+    color: white;
+    background-color: #F08080;
+}
+
+.accordionGroupHeader.noVoteHeader .panel-heading {
+    color: white;
+    background-color: #D3D3D3;
+}
+
+.accordionGroup {
+    max-height: 300px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.accordionItem {
+    color: #545454;
+    font-size: 14px;
+}
