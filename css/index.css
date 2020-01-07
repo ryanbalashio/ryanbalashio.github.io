@@ -46,7 +46,7 @@ div.tooltip {
     position: fixed;
     top: 1em;
     left: 1em;
-    overflow-x: scroll;
+    overflow-x: auto;
     overflow-y: hidden;
 }
 
