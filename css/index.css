@@ -8,7 +8,7 @@ body {
     height: 100%;
     margin: 0;
     padding: 0;
-    border: solid red;
+    border: solid lightgray;
     border-width: 1px;
     overflow-x: scroll;
     overflow-y: hidden;
