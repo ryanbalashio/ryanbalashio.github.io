@@ -6,7 +6,14 @@
     <script src="jquery/jquery-3.4.1.min.js" charset="utf-8"></script>
     <script src="angularjs/1.5.3/angular.js"></script>
     <script src="angularjs/1.5.3/angular-animate.js"></script>
-    <script src="bootstrap/ui-bootstrap-tpls-1.3.2.js"></script>
+
+     <uib-accordion-group heading="No Vote ({{noVotes.length}})"
+                                    class="accordionGroupHeader noVoteHeader"
+                                    template-url="accordionHeaderTemplate.html">
+                                    <div class="accordionGroup">
+                                        <div ng-repeat="name in noVotes" class="accordionItem">{{name}}</div>
+                                    </div>
+                                </uib-accordion-group><script src="bootstrap/ui-bootstrap-tpls-1.3.2.js"></script>
     <script src="d3/d3.v3.min.js" charset="utf-8"></script>
     <script src="d3/d3.geo.projection.v0.min.js" charset="utf-8"></script>
     <script src="topo/topojson.v1.min.js" charset="utf-8"></script>
@@ -33,20 +40,20 @@
                                         <div ng-repeat="name in sanctuaries" class="accordionItem">{{name}}</div>
                                     </div>
                                 </uib-accordion-group>
-                                <uib-accordion-group heading="Anti-Sanctuaries ({{antiSanctuaries.length}})"
-                                    class="accordionGroupHeader antiSanctuaryHeader"
-                                    template-url="accordionHeaderTemplate.html">
-                                    <div class="accordionGroup">
-                                        <div ng-repeat="name in antiSanctuaries" class="accordionItem">{{name}}</div>
-                                    </div>
-                                </uib-accordion-group>
-                                <uib-accordion-group heading="No Vote ({{noVotes.length}})"
+                                 <uib-accordion-group heading="No Vote ({{noVotes.length}})"
                                     class="accordionGroupHeader noVoteHeader"
                                     template-url="accordionHeaderTemplate.html">
                                     <div class="accordionGroup">
                                         <div ng-repeat="name in noVotes" class="accordionItem">{{name}}</div>
                                     </div>
                                 </uib-accordion-group>
+                                <uib-accordion-group heading="Anti-Sanctuaries ({{antiSanctuaries.length}})"
+                                    class="accordionGroupHeader antiSanctuaryHeader"
+                                    template-url="accordionHeaderTemplate.html">
+                                    <div class="accordionGroup">
+                                        <div ng-repeat="name in antiSanctuaries" class="accordionItem">{{name}}</div>
+                                    </div>
+                                </uib-accordion-group>                              
                             </uib-accordion>
                         </div>
                     </div>
