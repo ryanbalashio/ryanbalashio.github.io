@@ -60,12 +60,12 @@ div.tooltip {
 
 .accordionGroupHeader.sanctuaryHeader .panel-heading {
     color: white;
-    background-color: #87CEFA;
+    background-color: #B80000;
 }
 
 .accordionGroupHeader.antiSanctuaryHeader .panel-heading {
     color: white;
-    background-color: #F08080;
+    background-color: #00297B;
 }
 
 .accordionGroupHeader.noVoteHeader .panel-heading {
