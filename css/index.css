@@ -23,7 +23,7 @@ div.tooltip {
     pointer-events: none;
     color: black;
     font-weight: bold;
-    background-color: lightgray;
+    background-color: rgba(211,211,211,0.6);
 }
 
 #chartSvg {
