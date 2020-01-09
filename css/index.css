@@ -22,6 +22,8 @@ div.tooltip {
     border: 0px;
     pointer-events: none;
     color: black;
+    font-weight: bold;
+    background-color: lightgray;
 }
 
 #chartSvg {
