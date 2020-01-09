@@ -20,11 +20,11 @@ div.tooltip {
     padding: 2px;
     font: 14px sans-serif;
     border: 0px;
-    border-radius: 5px;
+    border-radius: 2px;
     pointer-events: none;
     color: black;
     font-weight: bold;
-    background-color: rgba(211,211,211,0.6);
+    background-color: rgba(211,211,211,0.9);
 }
 
 #chartSvg {
